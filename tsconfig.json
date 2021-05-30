@@ -22,6 +22,6 @@
     }
   },
   "include": ["src"],
-  "exclude": ["public/*", "node_modules/"]
+  "exclude": ["public/*", "node_modules/","vendor/*"]
 
 }
