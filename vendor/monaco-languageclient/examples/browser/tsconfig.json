@@ -1,0 +1,11 @@
+{
+    "extends": "../../client/tsconfig",
+    "compilerOptions": {
+        "rootDir": "src",
+        "outDir": "lib",
+        "baseUrl": "."
+    },
+    "include": [
+        "src"
+    ]
+}
