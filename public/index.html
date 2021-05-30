@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        #editor {
+            margin: auto;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="editor"></div>
+    <script src="https://cdn.jsdelivr.net/npm/typescript@4.2.3/lib/typescript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.24.0/min/vs/loader.js"
+        integrity="sha256-AQ6VhJSh7/GzwMIdvsHxLVTAuDGw7QWflZTYkQThEds=" crossorigin="anonymous"></script>
+    <script>
+        //sets window.monaco
+        require.config({ paths: { vs: "https://cdn.jsdelivr.net/npm/monaco-editor@0.22.3/min/vs" }, });
+        window._editor_ready = new Promise((resolve) => require(["vs/editor/editor.main"], resolve));
+    </script>
+
+    <script type="module">
+        import { InitMonacoSvelte } from './monaco-svelte.mjs';
+        async function main() {
+            InitMonacoSvelte(document.getElementById('editor'), true);
+        }
+        main();
+    </script>
+
+</body>
+
+</html>

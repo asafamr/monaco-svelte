@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "strict": true,
+    "rootDir": ".",
+    "target": "ESNext",
+    "baseUrl": ".",
+    "sourceRoot": ".",
+    "declaration": true,
+    "module": "ESNext",
+    "outDir": "build/ts-out",
+    "sourceMap": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+  
+    // "isolatedModules": true,
+    "composite": true,
+    "resolveJsonModule":true,
+    "skipLibCheck": true,
+    "paths": {
+      "*": ["node_modules/*", "vendor/*"] 
+    }
+  },
+  "include": ["src"],
+  "exclude": ["public/*", "node_modules/"]
+
+}
