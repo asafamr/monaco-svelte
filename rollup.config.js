@@ -31,6 +31,13 @@ export default {
         { find: "monaco-editor-core", replacement: "monaco-editor" },
       ],
     }),
+    {
+      resolveId(source,importer){
+        if(source.includes('svelte/compiler')){ // otherwise it's included twice
+          return this.resolve(source, importer, { skipSelf: true , custom: { 'node-resolve': { isRequire: true }}});
+        }
+      }
+    },
     resolve({
       browser: true,
       preferBuiltins: false,
