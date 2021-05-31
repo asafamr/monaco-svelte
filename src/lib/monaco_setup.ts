@@ -17,6 +17,7 @@ import {
   CSSPlugin,
   TypeScriptPlugin,
   PluginHost,
+  LSAndTSDocResolver,
 } from "svelte-language-server/dist/src/plugins";
 // import { TextDocumentIdentifier } from 'monaco-languageclient';
 import * as htmllang from "./syntax";
@@ -78,7 +79,7 @@ export async function Init(element: HTMLElement) {
   //   ],
   // });
 
-  let doDiagnostics=()=>{}; 
+  let doDiagnostics = () => { };
   const editor = monaco.editor.create(element, {
     model: monaco.editor.createModel(TEST_SVELTE, LANGUAGE_ID, MONACO_URI),
     "semanticHighlighting.enabled": true,
@@ -88,10 +89,10 @@ export async function Init(element: HTMLElement) {
       enabled: true,
     },
   });
-  setTimeout(()=>doDiagnostics(), 1);
-  
-  
-  
+  setTimeout(() => doDiagnostics(), 1);
+
+
+
 
   // Register a tokens provider for the language
 
@@ -136,7 +137,7 @@ export async function Init(element: HTMLElement) {
   pluginHost.register(new HTMLPlugin(docManager, configManager));
   pluginHost.register(new CSSPlugin(docManager, configManager));
   pluginHost.register(
-    new TypeScriptPlugin(docManager, configManager, workspaceUris)
+    new TypeScriptPlugin(configManager, new LSAndTSDocResolver(docManager, workspaceUris, configManager))
   );
 
   monaco.languages.registerCompletionItemProvider(LANGUAGE_ID, {
@@ -172,7 +173,8 @@ export async function Init(element: HTMLElement) {
       return pluginHost
         .resolveCompletion(
           { uri: model?.uri?.toString() ?? "" },
-          m2p.asCompletionItem(item)
+          m2p.asCompletionItem(item),
+          token
         )
         .then((result) => p2m.asCompletionItem(result, item.range));
     },
@@ -207,7 +209,8 @@ export async function Init(element: HTMLElement) {
       });
       const symobls = await pluginHost.getDocumentSymbols({
         uri: model.uri.toString(),
-      });
+
+      }, token);
       return p2m.asSymbolInformations(symobls);
     },
   });
@@ -230,7 +233,7 @@ export async function Init(element: HTMLElement) {
   monaco.languages.registerSignatureHelpProvider(LANGUAGE_ID, {
     signatureHelpTriggerCharacters: ["(", ",", "<"],
     signatureHelpRetriggerCharacters: [")"],
-    async provideSignatureHelp(model, position, token, context) {
+    async provideSignatureHelp(model, position, token:_monaco.CancellationToken, context) {
       docManager.openDocument({
         text: model.getValue(),
         uri: model.uri.toString(),
@@ -238,7 +241,8 @@ export async function Init(element: HTMLElement) {
       const help = await pluginHost.getSignatureHelp(
         { uri: model.uri.toString() },
         m2p.asPosition(position.lineNumber, position.column),
-        m2p.asSignatureHelpContext(context)
+        m2p.asSignatureHelpContext(context),
+        token
       );
       return p2m.asSignatureHelpResult(help);
     },
@@ -260,7 +264,7 @@ export async function Init(element: HTMLElement) {
       return p2m.asSemanticTokens(st);
     },
 
-    releaseDocumentSemanticTokens: () => {},
+    releaseDocumentSemanticTokens: () => { },
   });
 
   doDiagnostics = debounce(async () => {

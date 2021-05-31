@@ -5,7 +5,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5c091b58-5cfa-483b-b2a6-ee57a161332b/deploy-status)](https://app.netlify.com/sites/elegant-rosalind-57500c/deploys)
 
-This is a port of the VSCode language tools of [Svelte frontend framework](https://svelte.dev/) to the browser based [Monaco editor](https://github.com/microsoft/monaco-editor) (no server - everything is run on the client side)
+This is a port of the VSCode language tools of [Svelte frontend framework](https://svelte.dev/) to the browser based [Monaco editor](https://github.com/microsoft/monaco-editor) (no server - everything runs on the client side)
 
 ## [Demo here](https://elegant-rosalind-57500c.netlify.app)
 
