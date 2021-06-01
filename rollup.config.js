@@ -29,11 +29,13 @@ export default {
       entries: [
         { find: "lodash", replacement: "lodash-es" },
         { find: "monaco-editor-core", replacement: "monaco-editor" },
+        { find: /vscode.html.languageservice.lib.umd.*webCustomData/, 
+          replacement: "vscode-html-languageservice/lib/esm/languageFacts/data/webCustomData" },
       ],
     }),
     {
       resolveId(source,importer){
-        if(source.includes('svelte/compiler')){ // otherwise it's included twice
+        if(source.includes('svelte/compiler') ){ // otherwise it's included twice
           return this.resolve(source, importer, { skipSelf: true , custom: { 'node-resolve': { isRequire: true }}});
         }
       }
@@ -58,7 +60,8 @@ export default {
     }),
     // terser(),
     analyze({ 
-      summaryOnly: true, limit: 20 
+      // summaryOnly: true,
+       limit: 20 
     }),
   ],
 
