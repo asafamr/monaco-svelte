@@ -104,6 +104,7 @@ export const language = {
       ],
       curly: [
         [/[ \t\r\n]+/],
+        [/{/,'delimiter',"@push"],
         [
           /[^}\s]+/, {
             cases: {
