@@ -76,9 +76,9 @@ export const language = {
     tokenPostfix: '.html',
     ignoreCase: true,
     
-    moustkeys: ['#if', '/if', ':else', ':else if', 'as', '#each',
+    moustkeys: ['#if', '/if', ':else if',':else',  'as', '#each',
       '/each', '#await', ':then', ':catch', '/await', '#key', '/key', '@html', '@debug'],
-      
+
     // The main tokenizer for our languages
     tokenizer: {
       root: [
