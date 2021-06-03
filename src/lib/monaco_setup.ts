@@ -1,5 +1,5 @@
 // import _monaco from 'monaco-editor'
-import type * as _monaco from "monaco-editor-core";
+import type * as _monaco from "monaco-editor";
 import { SvelteDocument } from "svelte-language-server/dist/src/plugins/svelte/SvelteDocument";
 import {
   Document,
@@ -21,6 +21,7 @@ import {
 } from "svelte-language-server/dist/src/plugins";
 // import { TextDocumentIdentifier } from 'monaco-languageclient';
 import * as htmllang from "./syntax";
+
 
 import { debounce } from "lodash";
 

@@ -47,7 +47,7 @@ export default {
     }),
     commonjs({
       ignoreDynamicRequires: true,
-      sourceMap: true,
+      sourceMap: false,
     }),
     nodePolyfills(),
     json(),
@@ -85,7 +85,7 @@ export default {
   //
   output: [
     {
-      sourcemap: true,
+      sourcemap: false,
       file: "build/bundles/monaco-svelte.mjs",
       format: "amd", // this makes it easy to mock "fs" and undefine many other modules
       intro,

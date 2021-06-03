@@ -8,7 +8,7 @@
     "sourceRoot": ".",
     "declaration": true,
     "module": "ESNext",
-    "outDir": "build/ts-out",
+    "outDir": "build/ts-out/",
     "sourceMap": true,
     "downlevelIteration": true,
     "esModuleInterop": true,
@@ -18,10 +18,10 @@
     "resolveJsonModule":true,
     "skipLibCheck": true,
     "paths": {
-      "*": ["node_modules/*", "vendor/*"] 
+      "*": ["node_modules/*", "vendor/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src/**/*.ts"],
   "exclude": ["public/*", "node_modules/","vendor/*"]
 
 }
