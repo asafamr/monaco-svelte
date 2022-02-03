@@ -1,9 +1,7 @@
 
 # Monaco Svelte Language Server
 
-## WIP
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/5c091b58-5cfa-483b-b2a6-ee57a161332b/deploy-status)](https://app.netlify.com/sites/elegant-rosalind-57500c/deploys)
+### This was a POC - it is unmaintained. if you want to support latest Svelte Tools in Monaco, you might want to look at https://github.com/asafamr/svelte-vscode-web (Svelte language tools for VSCode Web, communicating using LSP protocol)
 
 This is a port of the VSCode language tools of [Svelte frontend framework](https://svelte.dev/) to the browser based [Monaco editor](https://github.com/microsoft/monaco-editor) (no server - everything runs on the client side)
 
@@ -15,15 +13,6 @@ This is a port of the VSCode language tools of [Svelte frontend framework](https
 * Diagnostics - typescript errors, etc...
 * Basic Monarch based syntax highlighting (typescript, html, no moustache currently)
 * Hover, signature, semantic tokens, doc symbols providers
-
-
-### TODO:
-* Move processing to a worker
-* Make bundle smaller
-* Make other preprocessor easier to include in a custom build?
-* Add moustache syntax highlighting {#if}, {#each}...
-* A decent theme
-* **open an issue and tell me**
 
 
 Notable packages used by this code:
